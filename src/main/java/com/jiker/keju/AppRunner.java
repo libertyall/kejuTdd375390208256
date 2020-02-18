@@ -22,12 +22,11 @@ public class AppRunner {
 
     public static StringBuffer getStringBuffer(String testDataFile) throws IOException {
         FileRead fileRead = new FileRead();
-        Taxicost taxicost = new Taxicost();
         List<TaxiTotal> taxiTotals =
                 fileRead.getDataFromFril(System.getProperty("user.dir") + "/src/main/resources/" + testDataFile);
         StringBuffer receipts = new StringBuffer();
         for (TaxiTotal taxiTotal : taxiTotals) {
-            receipts.append("收费").append(taxicost.calculation(taxiTotal).getTotal()).append("元\n");
+            receipts.append("收费").append(new Taxicost().calculation(taxiTotal).getTotal()).append("元\n");
         }
         return receipts;
     }

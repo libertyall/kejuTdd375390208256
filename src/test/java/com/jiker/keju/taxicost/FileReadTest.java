@@ -13,7 +13,7 @@ public class FileReadTest {
     @Test
     public void getDataFromFrilTest() throws IOException {
         FileRead fileRead = new FileRead();
-        String path = "D:\\code\\TDD\\tdd-taxi\\src\\main\\resources\\testData.txt";
+        String path = System.getProperty("user.dir") + "/src/main/resources/testData.txt";
         List<TaxiTotal> taxiTotals = fileRead.getDataFromFril(path);
         assertEquals(4, taxiTotals.size());
     }
