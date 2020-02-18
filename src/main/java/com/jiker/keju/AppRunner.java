@@ -1,15 +1,34 @@
 package com.jiker.keju;
 
+import com.jiker.keju.taxicost.FileRead;
+import com.jiker.keju.taxicost.TaxiTotal;
+import com.jiker.keju.taxicost.Taxicost;
+
+import java.io.IOException;
+import java.util.List;
+
 public class AppRunner {
 
     public static void main(String[] args) {
-        /*TODO
-          1. args[0]为resources下的测试数据文件名，例如传入的args[0]值为"testData.txt"。
-          2. 你写的程序将把testDataFile作为参数加载此文件并读取文件内的测试数据，并对每条测试数据计算结果。
-          3. 将所有计费结果拼接并使用\n分割，然后保存到receipt变量中。
-         */
-        String testDataFile = args[0];
-        String receipt = "";
+        StringBuffer receipts = new StringBuffer(0);
+        try {
+            receipts = getStringBuffer(args[0]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String receipt = receipts.toString();
         System.out.println(receipt);
+    }
+
+    public static StringBuffer getStringBuffer(String testDataFile) throws IOException {
+        FileRead fileRead = new FileRead();
+        Taxicost taxicost = new Taxicost();
+        List<TaxiTotal> taxiTotals =
+                fileRead.getDataFromFril(System.getProperty("user.dir")+"/src/main/resources/"+testDataFile);
+        StringBuffer receipts = new StringBuffer();
+        for (TaxiTotal taxiTotal : taxiTotals) {
+            receipts.append("收费").append(taxicost.calculation(taxiTotal).getTotal()).append("元\n");
+        }
+        return receipts;
     }
 }
