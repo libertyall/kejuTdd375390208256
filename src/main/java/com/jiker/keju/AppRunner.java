@@ -24,7 +24,7 @@ public class AppRunner {
         FileRead fileRead = new FileRead();
         Taxicost taxicost = new Taxicost();
         List<TaxiTotal> taxiTotals =
-                fileRead.getDataFromFril(System.getProperty("user.dir")+"/src/main/resources/"+testDataFile);
+                fileRead.getDataFromFril(System.getProperty("user.dir") + "/src/main/resources/" + testDataFile);
         StringBuffer receipts = new StringBuffer();
         for (TaxiTotal taxiTotal : taxiTotals) {
             receipts.append("收费").append(taxicost.calculation(taxiTotal).getTotal()).append("元\n");

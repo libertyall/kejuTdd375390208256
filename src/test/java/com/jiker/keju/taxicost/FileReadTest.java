@@ -21,7 +21,7 @@ public class FileReadTest {
     @Test
     public void readFileTest() throws IOException {
         FileRead fileRead = new FileRead();
-        String path = "D:\\code\\TDD\\tdd-taxi\\src\\main\\resources\\testData.txt";
+        String path = System.getProperty("user.dir") + "/src/main/resources/testData.txt";
         List<String> fileDatas = fileRead.readFile(path);
         assertEquals(4, fileDatas.size());
     }
