@@ -1,4 +1,4 @@
-## Kata介绍
+## Kata介绍 https://keju.jiker.com/
 1. 通过文本文件向应用程序提供输入数据testData.txt(src/main/resources/testData.txt)。
 2. 在AppRunner.java中集成你写的代码，并将结果赋值给receipt变量。
     * args[0]为resources下的测试数据文件名，例如传入的args[0]值为"testData.txt"。
